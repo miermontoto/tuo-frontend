@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LoginForm from './components/users/LoginForm';
+import RegisterForm from './components/users/RegisterForm';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
 
       <Routes>
         <Route path='/login' element={<LoginForm />} />
+        <Route path='/register' element={<RegisterForm />} />
       </Routes>
     </div>
   );
