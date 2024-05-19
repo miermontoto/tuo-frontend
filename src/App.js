@@ -3,6 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LoginForm from './components/users/LoginForm';
 import RegisterForm from './components/users/RegisterForm';
+import LogoutForm from './components/users/LogoutForm';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
           <div id='login'>
             {user == null ? (
               <div>
-                <li> <Link to='/login' setUser={setUser}>Iniciar sesión</Link> </li>
+                <li> <Link to='/login'>Iniciar sesión</Link> </li>
                 <li> <Link to='/register'>Registrarse</Link> </li>
               </div>
             ) : (
@@ -31,8 +32,9 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path='/login' element={<LoginForm />} />
-        <Route path='/register' element={<RegisterForm />} />
+        <Route path='/login' element={<LoginForm setUser={setUser} />} />
+        <Route path='/register' element={<RegisterForm setUser={setUser} />} />
+        <Route path='/logout' element={<LogoutForm setUser={setUser} />} />
       </Routes>
     </div>
   );

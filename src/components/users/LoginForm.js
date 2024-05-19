@@ -1,25 +1,28 @@
 import { useState } from 'react'
 import { queryApi } from '../../helpers/Api'
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 
 export const HandleLogin = async (setUser, email, password) => {
 	const response = await queryApi('POST', 'users/login', { email, password })
 
-	if (!response) return
+	if (!response) return false
 	if (response.data.apiKey) {
 		localStorage.setItem('token', response.data.apiKey)
-		window.location.href = '/'
 		setUser(response.data.apiKey)
 	}
+
+	return true
 }
 
-const LoginForm = (props) => {
+const LoginForm = ({ setUser }) => {
 	LoginForm.propTypes = {
 		setUser: PropTypes.func.isRequired,
 	}
 
 	const [inputs, setInputs] = useState({ email: '', password: '' })
-	const { setUser } = props
+	const navigate = useNavigate()
 
 	const handleInputChange = (e) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value })
@@ -31,6 +34,9 @@ const LoginForm = (props) => {
 		const password = inputs.password
 
 		await HandleLogin(setUser, email, password)
+		if (localStorage.getItem('token')) {
+			navigate('/')
+		}
 	}
 
 	return (

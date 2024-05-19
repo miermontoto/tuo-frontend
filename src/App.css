@@ -89,6 +89,7 @@ button {
   color: #fff;
   border: none;
   border-radius: 3px;
+  margin-right: 0.5em;
 }
 
 button:hover {
@@ -99,4 +100,12 @@ button:hover {
 .errorMessage {
   text-align: center;
   color: red;
+}
+
+.red {
+  background-color: red;
+}
+
+.red:hover {
+  background-color: darkred;
 }

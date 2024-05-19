@@ -1,16 +1,23 @@
-import { useState } from 'react'
-import { queryApi } from '../../helpers/Api'
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { queryApi } from '../../helpers/Api';
+import { useNavigate } from 'react-router-dom';
 
 import { HandleLogin } from './LoginForm';
 
-const RegisterForm = (props) => {
+const HandleRegister = async (setUser, email, password, nombre) => {
+	const response = await queryApi('POST', 'users/', { email, nombre, password })
+	if (!response) return
+	if (response.status === 'success') return await HandleLogin(setUser, email, password)
+}
+
+const RegisterForm = ({ setUser }) => {
 	RegisterForm.propTypes = {
 		setUser: PropTypes.func.isRequired,
 	}
 
 	const [inputs, setInputs] = useState({ email: '', password: '', name: ''})
-	const { setUser } = props
+	const navigate = useNavigate()
 
 	const handleInputChange = (e) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value })
@@ -23,9 +30,8 @@ const RegisterForm = (props) => {
 		const password = inputs.password
 		const nombre = inputs.name
 
-		const response = await queryApi('POST', 'users/', { email, nombre, password })
-		if (!response) return
-		if (response.status === 'success') await HandleLogin(setUser, email, password)
+		if (await HandleRegister(setUser, email, password, nombre)) navigate('/')
+		else navigate('/login')
 	}
 
 
