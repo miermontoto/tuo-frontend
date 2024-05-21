@@ -10,7 +10,7 @@ export const HandleLogin = async (setUser, email, password) => {
 	if (!response) return false
 	if (response.data.apiKey) {
 		localStorage.setItem('token', response.data.apiKey)
-		setUser(response.data.apiKey)
+		setUser(response.data.user)
 	}
 
 	return true

@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<LoginForm setUser={setUser} />} />
         <Route path='/register' element={<RegisterForm setUser={setUser} />} />
-        <Route path='/logout' element={<LogoutForm setUser={setUser} />} />
+        <Route path='/logout' element={<LogoutForm setUser={setUser} user={user} />} />
       </Routes>
     </div>
   );
