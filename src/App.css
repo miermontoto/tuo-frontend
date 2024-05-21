@@ -32,6 +32,12 @@ h2 {
   color: red;
 }
 
+.delete-button:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+}
+
 .navbar {
   list-style-type: none;
   margin: 0;
@@ -58,6 +64,10 @@ h2 {
 
 .navbar #login {
   float: right;
+}
+
+.navbar #endpoints {
+  margin-left: 17em;
 }
 
 .center-box {
@@ -108,4 +118,25 @@ button:hover {
 
 .red:hover {
   background-color: darkred;
+}
+
+div#present-list {
+  margin-top: 20px;
+}
+
+div#present-list div.present {
+  padding: 10px;
+  padding-bottom: 25px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+div#present-list div.present span {
+  font-style: italic;
+  color: grey;
+  font-size: 0.9em;
+  font-weight: bold;
 }
