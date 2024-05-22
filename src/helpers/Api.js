@@ -18,9 +18,9 @@ export const queryApi = async (method, endpoint, content = {}) => {
 
 	try {
 		let response = await fetch(url, params);
-		if (!response.ok) throw new Error('Error en la petición')
+		if (!response.ok) throw new Error(response)
 		return await response.json()
 	} catch (error) {
-		console.log(error)
+		return error
 	}
 }
