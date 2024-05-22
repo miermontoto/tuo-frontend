@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { queryApi } from '../../helpers/Api'
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { queryApi } from '../../helpers/Api';
 
 const NewPresent = () => {
 	const navigate = useNavigate()
@@ -12,8 +12,8 @@ const NewPresent = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		await queryApi('POST', 'presents', inputs)
-		navigate('/presents')
+		const result = await queryApi('POST', 'presents', inputs)
+		if (result?.status === 'success') navigate('/presents')
 		// TODO: gestionar mensaje de success/error, no redirigir directamente
 	}
 
