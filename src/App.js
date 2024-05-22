@@ -12,7 +12,7 @@ import RegisterForm from './components/users/RegisterForm';
 
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null)
 
   return (
     <div className='container'>

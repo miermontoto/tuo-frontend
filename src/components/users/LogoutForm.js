@@ -19,6 +19,7 @@ const LogoutForm = ({ setUser, user }) => {
 		await queryApi('POST', 'users/disconnect')
 
 		localStorage.removeItem('token')
+		localStorage.removeItem('user')
 		setUser(null)
 		navigate('/')
 	}

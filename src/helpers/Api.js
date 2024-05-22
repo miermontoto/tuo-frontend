@@ -6,10 +6,11 @@ export const queryApi = async (method, endpoint, content = {}) => {
 
 	let params = {
 		method: method,
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${localStorage.getItem('token')}`,
-		},
+		headers: { 'Content-Type': 'application/json' }
+	}
+
+	if (localStorage.getItem('token')) {
+		params.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`
 	}
 
 	if (Object.keys(content).length > 0) {

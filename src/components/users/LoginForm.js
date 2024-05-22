@@ -8,10 +8,10 @@ export const HandleLogin = async (setUser, email, password) => {
 	const response = await queryApi('POST', 'users/login', { email, password })
 
 	if (!response?.data) return false
-	if (response.data.apiKey) {
-		localStorage.setItem('token', response.data.apiKey)
-		setUser(response.data.user)
-	}
+
+	localStorage.setItem('user', JSON.stringify(response.data.user))
+	localStorage.setItem('token', response.data.apiKey)
+	setUser(response.data.user)
 
 	return true
 }

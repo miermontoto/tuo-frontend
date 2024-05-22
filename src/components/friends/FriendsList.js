@@ -6,9 +6,9 @@ const FriendsList = () => {
 	const navigate = useNavigate()
 	const [friendsList, setFriendsList] = useState([])
 
-	const handleDelete = async (id) => {
-		await queryApi('DELETE', `friends/${id}`)
-		setFriendsList(friendsList.filter(friend => friend.id !== id))
+	const handleDelete = async (email) => {
+		await queryApi('DELETE', `friends/${email}`)
+		setFriendsList(friendsList.filter(friend => friend.email !== email))
 	}
 
 	useEffect(() => {
@@ -28,7 +28,7 @@ const FriendsList = () => {
 				<div key={friend.id} className='friend'>
 					<h3>{friend.name}</h3>
 					<p>{friend.email}</p>
-					<button onClick={() => handleDelete(friend.id)} className='delete-button'>Eliminar</button>
+					<button onClick={() => handleDelete(friend.email)} className='delete-button'>Eliminar</button>
 				</div>
 			))}
 
