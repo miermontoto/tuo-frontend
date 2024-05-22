@@ -134,9 +134,14 @@ div#present-list div.present {
   position: relative;
 }
 
-div#present-list div.present span {
+div#present-list div.present div.priceAndLink {
   font-style: italic;
   color: grey;
   font-size: 0.9em;
   font-weight: bold;
+  display: flex;
+}
+
+div#present-list div.present div.priceAndLink span.price {
+  margin-right: 3px;
 }

@@ -29,7 +29,15 @@ const PresentList = () => {
 				<div key={present.id} className='present'>
 					<h3>{present.name}</h3>
 					<p>{present.description}</p>
-					<span>{present.price}€ @ <a href ={present.url} target='_blank' rel='noreferrer'>enlace</a></span>
+					<div className='priceAndLink'>
+						<span className='price'>{present.price}€</span>
+						{present.url && (
+							<div className='link'>
+								<span>@ </span>
+								<a href ={present.url} target='_blank' rel='noreferrer'>enlace</a>
+							</div>
+						)}
+					</div>
 					<button onClick={() => handleDelete(present.id)} className='delete-button'>Eliminar</button>
 				</div>
 			))}
