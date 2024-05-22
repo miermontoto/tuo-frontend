@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
-import LoginForm from './components/users/LoginForm';
-import RegisterForm from './components/users/RegisterForm';
-import LogoutForm from './components/users/LogoutForm';
-import PresentList from './components/presents/PresentList';
+
+import FriendsList from './components/friends/FriendsList';
+import NewFriend from './components/friends/NewFriend';
 import NewPresent from './components/presents/NewPresent';
+import PresentList from './components/presents/PresentList';
+import LoginForm from './components/users/LoginForm';
+import LogoutForm from './components/users/LogoutForm';
+import RegisterForm from './components/users/RegisterForm';
 
 
 function App() {
@@ -47,6 +50,9 @@ function App() {
 
         <Route path='/presents' element={<PresentList />} />
         <Route path='/presents/new' element={<NewPresent />} />
+
+        <Route path='/friends' element={<FriendsList />} />
+        <Route path='/friends/new' element={<NewFriend />} />
       </Routes>
     </div>
   );

@@ -145,3 +145,16 @@ div#present-list div.present div.priceAndLink {
 div#present-list div.present div.priceAndLink span.price {
   margin-right: 3px;
 }
+
+div#friends-list {
+  margin-top: 20px;
+}
+
+div#friends-list div.friend {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  position: relative;
+}
