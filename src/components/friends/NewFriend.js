@@ -1,13 +1,8 @@
-import { useState } from 'react'
-import { queryApi } from '../../helpers/Api'
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { queryApi } from '../../helpers/Api';
 
-const NewFriend = ({ setFriendsList }) => {
-	NewFriend.propTypes = {
-		setFriendsList: PropTypes.func.isRequired
-	}
-
+const NewFriend = () => {
 	const navigate = useNavigate()
 	const [inputs, setInputs] = useState({ email: '' })
 
@@ -17,11 +12,11 @@ const NewFriend = ({ setFriendsList }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		const result = await queryApi('POST', 'friends', inputs.email)
+		const result = await queryApi('POST', 'friends', {email: inputs.email})
 		if (result?.status === 'success') {
-			setFriendsList(friends => [...friends, result.data.friend])
 			navigate('/friends')
 		}
+		console.log(result)
 	}
 
 	return (
