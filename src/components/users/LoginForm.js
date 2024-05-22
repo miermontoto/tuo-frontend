@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import { queryApi } from '../../helpers/Api'
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { queryApi } from '../../helpers/Api';
 
 
 export const HandleLogin = async (setUser, email, password) => {
 	const response = await queryApi('POST', 'users/login', { email, password })
 
-	if (!response) return false
+	if (!response?.data) return false
 	if (response.data.apiKey) {
 		localStorage.setItem('token', response.data.apiKey)
 		setUser(response.data.user)
@@ -33,10 +33,10 @@ const LoginForm = ({ setUser }) => {
 		const email = inputs.email
 		const password = inputs.password
 
-		await HandleLogin(setUser, email, password)
-		if (localStorage.getItem('token')) {
-			navigate('/')
-		}
+		const result = await HandleLogin(setUser, email, password)
+		if (!result || !localStorage.getItem('token')) return // TODO: mostrar mensaje de error
+
+		navigate('/')
 	}
 
 	return (

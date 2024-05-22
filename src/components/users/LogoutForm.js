@@ -11,7 +11,7 @@ const LogoutForm = ({ setUser, user }) => {
 
 	const navigate = useNavigate()
 
-	if (user == null) navigate('/') // TODO: fix this
+	if (!localStorage.getItem('token')) navigate('/login')
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
