@@ -32,7 +32,7 @@ function App() {
               </div>
             ) : (
               <div>
-                <li> <Link to='/profile'>Perfil</Link> </li>
+                <li> <Link to='/profile'>{user.name}</Link> </li>
                 <li> <Link to='/logout'>Cerrar sesión</Link> </li>
               </div>
             )}

@@ -28,11 +28,12 @@ const NewPresent = () => {
 					placeholder='Nombre'
 					value={inputs.name || ''}
 					onChange={handleInputChange}
+					required
 				/>
 				<input
 					type='textarea'
 					name='description'
-					placeholder='Descripción'
+					placeholder='Descripción (opcional)'
 					value={inputs.description || ''}
 					onChange={handleInputChange}
 				/>
@@ -42,6 +43,7 @@ const NewPresent = () => {
 					placeholder='Precio'
 					value={inputs.price || ''}
 					onChange={handleInputChange}
+					required
 				/>
 				<input
 					type='url'
