@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryApi } from '../../helpers/Api';
 
+
 const NewFriend = () => {
+	const target = new URLSearchParams(window.location.search).get('email')
+
 	const navigate = useNavigate()
-	const [inputs, setInputs] = useState({ email: '' })
+	const [inputs, setInputs] = useState({ email: target || '' })
 
 	const handleInputChange = (e) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value })

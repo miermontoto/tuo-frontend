@@ -8,6 +8,7 @@ const PresentList = () => {
 
 	const navigate = useNavigate()
 	const [presentList, setPresentList] = useState([])
+	const isItMe = !email || JSON.parse(localStorage.getItem('user')).email === email
 
 	useEffect(() => {
 		const getPresents = async () => {
@@ -42,7 +43,7 @@ const PresentList = () => {
 							</div>
 						)}
 					</div>
-					{!email && (
+					{isItMe && (
 						<div className='actions'>
 							<button onClick={() => navigate(`/presents/edit?id=${present.id}`)} className='edit-button'>Editar</button>
 							<button onClick={() => handleDelete(present.id)} className='red'>Eliminar</button>
@@ -51,7 +52,7 @@ const PresentList = () => {
 				</div>
 			))}
 
-			{!email && (<button onClick={() => navigate('/presents/new')}>Nuevo regalo</button>)}
+			{isItMe && (<button onClick={() => navigate('/presents/new')}>Nuevo regalo</button>)}
 		</div>
 	)
 }

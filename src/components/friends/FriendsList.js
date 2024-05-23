@@ -25,7 +25,7 @@ const FriendsList = () => {
 		<div id='friends-list'>
 			<h2>Amigos</h2>
 			{friendsList.map(friend => (
-				<div key={friend.id} className='friend'>
+				<div key={friend.id} className='friend' onClick={() => navigate(`/profile?email=${friend.email}`)}>
 					<h3>{friend.name}</h3>
 					<p>{friend.email}</p>
 					<div className='actions'>
