@@ -4,18 +4,22 @@ import { queryApi } from '../../helpers/Api';
 
 
 const PresentList = () => {
+	const email = new URLSearchParams(window.location.search).get('email')
+
 	const navigate = useNavigate()
 	const [presentList, setPresentList] = useState([])
 
 	useEffect(() => {
 		const getPresents = async () => {
 			if (!localStorage.getItem('token')) navigate('/login')
-			const presents = await queryApi('GET', 'presents')
+			const target = email ? `presents?userEmail=${email}` : 'presents'
+			const presents = await queryApi('GET', target)
+			if (!presents?.data) return
 			setPresentList(presents.data.presents)
 		}
 
 		getPresents()
-	}, [navigate])
+	}, [navigate, email])
 
 	const handleDelete = async (id) => {
 		await queryApi('DELETE', `presents/${id}`)
@@ -38,11 +42,15 @@ const PresentList = () => {
 							</div>
 						)}
 					</div>
-					<button onClick={() => handleDelete(present.id)} className='delete-button'>Eliminar</button>
+					{!email && (
+						<div className='actions'>
+							<button onClick={() => handleDelete(present.id)} className='red'>Eliminar</button>
+						</div>
+					)}
 				</div>
 			))}
 
-			<button onClick={() => navigate('/presents/new')}>Nuevo regalo</button>
+			{!email && (<button onClick={() => navigate('/presents/new')}>Nuevo regalo</button>)}
 		</div>
 	)
 }

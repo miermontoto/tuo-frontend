@@ -22,22 +22,6 @@ h2 {
   margin-left: 10px;
 }
 
-.delete-button {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: red;
-}
-
-.delete-button:hover {
-  cursor: pointer;
-  background-color: red;
-  color: white;
-}
-
 .navbar {
   list-style-type: none;
   margin: 0;
@@ -157,4 +141,11 @@ div#friends-list div.friend {
   border-radius: 3px;
   margin-bottom: 10px;
   position: relative;
+}
+
+.actions {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 }

@@ -28,7 +28,10 @@ const FriendsList = () => {
 				<div key={friend.id} className='friend'>
 					<h3>{friend.name}</h3>
 					<p>{friend.email}</p>
-					<button onClick={() => handleDelete(friend.email)} className='delete-button'>Eliminar</button>
+					<div className='actions'>
+						<button onClick={() => navigate(`/presents?email=${friend.email}`)} className='edit-button'>Regalos</button>
+						<button onClick={() => handleDelete(friend.email)} className='red'>Eliminar</button>
+					</div>
 				</div>
 			))}
 
