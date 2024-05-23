@@ -32,7 +32,7 @@ const PresentList = () => {
 			<h2>Regalos</h2>
 			{presentList.map(present => (
 				<div key={present.id} className='present'>
-					<h3>{present.name}</h3>
+					<h3 onClick={() => navigate(`/presents/view?id=${present.id}`)}>{present.name}</h3>
 					<p>{present.description}</p>
 					<div className='priceAndLink'>
 						<span className='price'>{present.price}€</span>
@@ -45,7 +45,7 @@ const PresentList = () => {
 					</div>
 					{isItMe && (
 						<div className='actions'>
-							<button onClick={() => navigate(`/presents/edit?id=${present.id}`)} className='edit-button'>Editar</button>
+							<button onClick={() => navigate(`/presents/edit?id=${present.id}`)} className='edit-button blue'>Editar</button>
 							<button onClick={() => handleDelete(present.id)} className='red'>Eliminar</button>
 						</div>
 					)}

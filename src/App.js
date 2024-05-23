@@ -10,6 +10,7 @@ import LoginForm from './components/users/LoginForm';
 import LogoutForm from './components/users/LogoutForm';
 import RegisterForm from './components/users/RegisterForm';
 import Profile from './components/profile/Profile';
+import PresentDetail from './components/presents/PresentDetail';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route path='/presents' element={<PresentList />} />
         <Route path='/presents/new' element={<NewPresent />} />
         <Route path='/presents/edit' element={<NewPresent />} />
+        <Route path='/presents/view' element={<PresentDetail />} />
 
         <Route path='/friends' element={<FriendsList />} />
         <Route path='/friends/new' element={<NewFriend />} />

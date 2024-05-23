@@ -20,6 +20,7 @@ h1 {
 
 h2 {
   margin-left: 10px;
+  text-decoration: underline;
 }
 
 .navbar {
@@ -28,6 +29,7 @@ h2 {
   padding: 0;
   overflow: hidden;
   background-color: #000000;
+  border-radius: 5px;
 }
 
 .navbar li {
@@ -121,7 +123,7 @@ button:hover {
 }
 
 #present-list .present .priceAndLink .price {
-  margin-right: 3px;
+  margin-right: 6px;
 }
 
 #friends-list {
@@ -153,4 +155,30 @@ button:hover {
 #present-info {
   display: flex;
   justify-content: space-between;
+}
+
+.blue {
+  background-color: royalblue;
+}
+
+.blue:hover {
+  background-color: blue;
+}
+
+a {
+  border-radius: 3px;
+  padding: 3px;
+}
+
+a:hover {
+  background-color: #afafaf;
+  color: #fafafa !important;
+}
+
+a:visited {
+  color: inherit;
+}
+
+.friend:hover h3, .present:hover h3 {
+  cursor: pointer;
 }

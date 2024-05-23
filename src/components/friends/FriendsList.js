@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { queryApi } from '../../helpers/Api'
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { queryApi } from '../../helpers/Api';
 
 const FriendsList = () => {
 	const navigate = useNavigate()
@@ -14,7 +14,7 @@ const FriendsList = () => {
 	useEffect(() => {
 		const getFriends = async () => {
 			if (!localStorage.getItem('token')) navigate('/login')
-			const friends = await queryApi('GET', 'friends')
+			const friends = await queryApi('GET', 'friends?with=friendship')
 			setFriendsList(friends.data.friends)
 		}
 
@@ -25,11 +25,11 @@ const FriendsList = () => {
 		<div id='friends-list'>
 			<h2>Amigos</h2>
 			{friendsList.map(friend => (
-				<div key={friend.id} className='friend' onClick={() => navigate(`/profile?email=${friend.email}`)}>
-					<h3>{friend.name}</h3>
+				<div key={friend.id} className='friend'>
+					<h3 onClick={() => navigate(`/profile?email=${friend.email}`)}>{friend.name}</h3>
 					<p>{friend.email}</p>
 					<div className='actions'>
-						<button onClick={() => navigate(`/presents?email=${friend.email}`)} className='edit-button'>Regalos</button>
+						{friend.friendship ? (<button onClick={() => navigate(`/presents?email=${friend.email}`)} className='edit-button blue'>Regalos</button>) : (<></>)}
 						<button onClick={() => handleDelete(friend.email)} className='red'>Eliminar</button>
 					</div>
 				</div>
