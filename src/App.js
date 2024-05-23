@@ -50,6 +50,7 @@ function App() {
 
         <Route path='/presents' element={<PresentList />} />
         <Route path='/presents/new' element={<NewPresent />} />
+        <Route path='/presents/edit' element={<NewPresent />} />
 
         <Route path='/friends' element={<FriendsList />} />
         <Route path='/friends/new' element={<NewFriend />} />

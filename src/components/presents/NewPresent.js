@@ -1,9 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryApi } from '../../helpers/Api';
 
 const NewPresent = () => {
+	const id = new URLSearchParams(window.location.search).get('id')
 	const navigate = useNavigate()
+
+	// TODO: redirigir a /presents/new si no hay ID
+	// TODO: redirigir a /presents/edit si hay ID y está en /presents/new
+	useEffect(() => {
+		const presentData = async (id) => {
+			const present = await queryApi('GET', `presents/${id}`)
+			if (present?.data) setInputs(present.data.present)
+		}
+
+		if (id) presentData(id)
+	}, [id])
+
 	const [inputs, setInputs] = useState({ name: '', price: '', description: '', url: '' })
 
 	const handleInputChange = (e) => {
@@ -12,14 +25,16 @@ const NewPresent = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		const result = await queryApi('POST', 'presents', inputs)
+		const method = id ? 'PUT' : 'POST'
+		const target = id ? `presents/${id}` : 'presents'
+		const result = await queryApi(method, target, inputs)
 		if (result?.status === 'success') navigate('/presents')
 		// TODO: gestionar mensaje de success/error, no redirigir directamente
 	}
 
 	return (
 		<div id='new-present'>
-			<h2>Nuevo regalo</h2>
+			{id ? <h2>Editar regalo</h2> : <h2>Nuevo regalo</h2>}
 
 			<form onSubmit={handleSubmit}>
 				<input

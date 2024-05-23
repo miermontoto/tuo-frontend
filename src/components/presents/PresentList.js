@@ -44,6 +44,7 @@ const PresentList = () => {
 					</div>
 					{!email && (
 						<div className='actions'>
+							<button onClick={() => navigate(`/presents/edit?id=${present.id}`)} className='edit-button'>Editar</button>
 							<button onClick={() => handleDelete(present.id)} className='red'>Eliminar</button>
 						</div>
 					)}
