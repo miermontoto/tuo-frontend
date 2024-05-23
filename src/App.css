@@ -104,21 +104,15 @@ button:hover {
   background-color: darkred;
 }
 
-div#present-list {
+#present-list {
   margin-top: 20px;
 }
 
-div#present-list div.present {
-  padding: 10px;
+#present-list .present {
   padding-bottom: 25px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  position: relative;
 }
 
-div#present-list div.present div.priceAndLink {
+#present-list .present .priceAndLink {
   font-style: italic;
   color: grey;
   font-size: 0.9em;
@@ -126,15 +120,15 @@ div#present-list div.present div.priceAndLink {
   display: flex;
 }
 
-div#present-list div.present div.priceAndLink span.price {
+#present-list .present .priceAndLink .price {
   margin-right: 3px;
 }
 
-div#friends-list {
+#friends-list {
   margin-top: 20px;
 }
 
-div#friends-list div.friend {
+.friend, .present, .box {
   padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
@@ -148,4 +142,15 @@ div#friends-list div.friend {
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+}
+
+.note {
+  font-size: 0.8em;
+  color: grey;
+  font-style: italic;
+}
+
+#present-info {
+  display: flex;
+  justify-content: space-between;
 }

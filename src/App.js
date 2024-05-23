@@ -9,6 +9,7 @@ import PresentList from './components/presents/PresentList';
 import LoginForm from './components/users/LoginForm';
 import LogoutForm from './components/users/LogoutForm';
 import RegisterForm from './components/users/RegisterForm';
+import Profile from './components/profile/Profile';
 
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
 
         <Route path='/friends' element={<FriendsList />} />
         <Route path='/friends/new' element={<NewFriend />} />
+
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </div>
   );
