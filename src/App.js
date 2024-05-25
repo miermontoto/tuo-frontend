@@ -5,13 +5,12 @@ import './App.css';
 import FriendsList from './components/friends/FriendsList';
 import NewFriend from './components/friends/NewFriend';
 import NewPresent from './components/presents/NewPresent';
+import PresentDetail from './components/presents/PresentDetail';
 import PresentList from './components/presents/PresentList';
+import Profile from './components/profile/Profile';
 import LoginForm from './components/users/LoginForm';
 import LogoutForm from './components/users/LogoutForm';
 import RegisterForm from './components/users/RegisterForm';
-import Profile from './components/profile/Profile';
-import PresentDetail from './components/presents/PresentDetail';
-
 
 function App() {
   const [user, setUser] = useState(window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null)

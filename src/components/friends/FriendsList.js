@@ -15,6 +15,7 @@ const FriendsList = () => {
 		const getFriends = async () => {
 			if (!localStorage.getItem('token')) navigate('/login')
 			const friends = await queryApi('GET', 'friends?with=friendship')
+			if (!friends?.data) return
 			setFriendsList(friends.data.friends)
 		}
 
