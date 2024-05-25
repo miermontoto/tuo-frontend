@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { queryApi } from '../../helpers/Api'
 import { useNavigate } from 'react-router-dom'
