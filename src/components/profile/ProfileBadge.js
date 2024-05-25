@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { queryApi } from '../../helpers/Api';
 
-const ProfileBadge = () => {
+const ProfileBadge = ({ iEmail }) => {
+	ProfileBadge.defaultProps = {
+		iEmail: ''
+	}
+
 	const navigate = useNavigate()
 	const [profile, setProfile] = useState({})
 
-	const email = new URLSearchParams(window.location.search).get('email')
+	const email = new URLSearchParams(window.location.search).get('email') || iEmail
 
 	useEffect(() => {
 		const getProfile = async () => {
@@ -23,7 +27,7 @@ const ProfileBadge = () => {
 	return (
 		<div id='profile-badge'>
 			<div id='user-info' className='box'>
-				<h3>{profile.name}</h3>
+				<h3 onClick={() => {navigate(`/profile?email=${profile.email}`)}}>{profile.name}</h3>
 				<p><b>Correo: </b>{profile.email}</p>
 				<p><b>Rol: </b>{profile.role}</p>
 			</div>
