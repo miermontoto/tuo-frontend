@@ -43,12 +43,22 @@ const PresentList = () => {
 							</div>
 						)}
 					</div>
-					{isItMe && (
+					{isItMe ? (
 						<div className='actions'>
 							<button onClick={() => navigate(`/presents/edit?id=${present.id}`)} className='edit-button blue'>Editar</button>
 							<button onClick={() => handleDelete(present.id)} className='red'>Eliminar</button>
 						</div>
-					)}
+					 ) : (
+						<div className='actions'>
+							<button onClick={() => navigate(`/presents/view?id=${present.id}`)} className='blue'>Ver</button>
+						</div>
+					 )}
+
+					 {present.chosenBy && (
+						<div className='chosen'>
+							<p>Este regalo ya ha sido escogido.</p>
+						</div>
+					 )}
 				</div>
 			))}
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryApi } from '../../helpers/Api';
+import PropTypes from 'prop-types';
 
 const ProfileBadge = ({ iEmail }) => {
 	ProfileBadge.defaultProps = {
-		iEmail: ''
+		iEmail: PropTypes.string
 	}
 
 	const navigate = useNavigate()

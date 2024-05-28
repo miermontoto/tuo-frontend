@@ -2,8 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { queryApi } from '../../helpers/Api'
 import ProfileBadge from '../profile/ProfileBadge'
 
+
 const PresentDetail = () => {
 	const id = new URLSearchParams(window.location.search).get('id')
+
+	const ChoosePresent = async (id) => {
+		const response = await queryApi('PUT', `presents/${id}`)
+		if (response?.status === 'success') {
+			window.location.reload()
+		}
+	}
 
 	const [present, setPresent] = useState({})
 	const [canBeChosen, setCanBeChosen] = useState(false)
@@ -11,17 +19,16 @@ const PresentDetail = () => {
 
 	useEffect(() => {
 		const getPresent = async () => {
-			const present = await queryApi('GET', `presents/${id}`)
-			console.log(present)
-			if (!present?.data) return
-			setPresent(present.data.present)
-			const yours = present.data.userId === JSON.parse(localStorage.getItem('user')).id
+			const response = await queryApi('GET', `presents/${id}`)
+			if (!response?.data) return
+			setPresent(response.data.present)
+			const yours = present.userId === JSON.parse(localStorage.getItem('user')).id
 			setIsYours(yours)
-			setCanBeChosen(present.data.chosenBy == null && !yours)
+			setCanBeChosen(present.chosenBy == null && !yours)
 		}
 
 		getPresent()
-	}, [id])
+	}, [id, canBeChosen, isYours, present.userId, present.chosenBy])
 
 	if (!id) return null
 
@@ -41,7 +48,7 @@ const PresentDetail = () => {
 			</div>
 
 			<div>
-				{canBeChosen && <button>Elegir</button>}
+				{canBeChosen && <button onClick={() => {ChoosePresent(present.id)}}>Elegir</button>}
 				{isYours && <button>Editar</button>}
 				{isYours && <button>Eliminar</button>}
 			</div>

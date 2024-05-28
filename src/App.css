@@ -188,3 +188,8 @@ hr {
   margin-bottom: 2em;
   color: lightgray;
 }
+
+.chosen {
+  font-size: 0.65em;
+  font-style: italic;
+}
